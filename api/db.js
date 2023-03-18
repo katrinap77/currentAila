@@ -1,12 +1,34 @@
-const Pool = require("pg").Pool;
+const { Pool } = require("pg");
 
 const pool = new Pool({
+  host: "localhost",
   user: "postgres",
-  password: "POSTGRES_PASSWORD",
-  host: "db",
-  port: 5432,
+  password: "password",
   database: "postgres",
+  port: "5432",
+  max: 20,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
 });
+
+module.exports = {
+  query: (text, params, callback) => {
+    return pool.query(text, params, callback);
+  },
+  end: () => {
+    pool.end();
+  },
+};
+
+// const Pool = require("pg").Pool;
+
+// const pool = new Pool({
+//   user: "postgres",
+//   password: "password]",
+//   host: "localhost",
+//   port: 5432,
+//   database: "postgres",
+// });
 
 // const pool = new Pool({
 //   user: process.env."PGUSER",

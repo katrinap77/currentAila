@@ -24,6 +24,7 @@
 
 import React from "react";
 import AllCoursesPage from "./components/AllCoursesPage";
+// import Course from "./components/Course";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
       {/* <Header /> */}
       <div className="container">
         <AllCoursesPage />
+        {/* <Course /> */}
         {/* <Routes> */}
         {/* <Route path="/courses/:id" element={<SingleCoursePage />} /> */}
         {/* <Route exact path="/courses" element={<AllCourseskat />} />

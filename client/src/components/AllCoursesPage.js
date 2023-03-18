@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+import "./AllCoursesPage.css";
 
 const AllCoursesPage = () => {
   const [courses, setCourses] = useState([]);
@@ -14,13 +16,17 @@ const AllCoursesPage = () => {
     fetchData();
   }, []);
 
+  // const stripeUrl = "https://www.buy.stripe.com/";
+  // console.log(buyLink);
+
   return (
     <>
       <h2 className="courses-title">Courses</h2>
       <ul>
         {courses.map((course) => {
           return (
-            <li key={course.i} className="courses-list">
+            <li key={course.id} className="courses-list">
+              <br />
               <div className="course-container">
                 <div>
                   <img
@@ -32,6 +38,33 @@ const AllCoursesPage = () => {
                   <p>{course.description}</p>
                   <p>{course.price}</p>
                 </div>
+                {/* <Link to={"/Course"} className="btn"> */}
+                <button> View course</button>
+                {/* </Link> */}
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <a
+                  href={course.buylink}
+                  // href={"https://www.buy.stripe.com/" + course.buylink}
+                  // 'https://www.buy.stripe.com/test_cN2eXq7Q81FfeKAcMN'
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button> Buy course</button>
+                </a>
+
+                {/* <Link
+                  to={"https://buy.stripe.com/" + course.buyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button> Buy course</button>
+                </Link> */}
+                {/* <Link
+                  to={"http://www.facebook.com/" + user.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                /> */}
+
                 <br />
               </div>
             </li>
@@ -39,14 +72,18 @@ const AllCoursesPage = () => {
         })}
       </ul>
       <div>
-        <a
-          href="https://buy.stripe.com/test_28o16A5I06Zzbyo5ko"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <button> Enrol in courses now</button>
-        </a>
+        <span>
+          &nbsp;&nbsp;&nbsp;
+          <a
+            href="https://buy.stripe.com/test_28o16A5I06Zzbyo5ko"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button> Buy multiple courses</button>
+          </a>
+        </span>
       </div>
+      <br />
     </>
   );
 };
