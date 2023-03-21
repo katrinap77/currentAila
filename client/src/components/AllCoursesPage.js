@@ -8,10 +8,10 @@ const AllCoursesPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await fetch("http://localhost:5001/courses");
-      const response = await fetch(
-        "https://my-json-server.typicode.com/katrinap77/jsoncourses/courses"
-      );
+      const response = await fetch("http://localhost:5001/courses");
+      // const response = await fetch(
+      //   "https://my-json-server.typicode.com/katrinap77/jsoncourses/courses"
+      // );
       const course = await response.json();
       setCourses(course);
       console.log(course);
