@@ -10,7 +10,8 @@ const AllCoursesPage = () => {
     const fetchData = async () => {
       // const response = await fetch("http://localhost:5001/courses");
       const response = await fetch(
-        "https://my-json-server.typicode.com/katrinap77/jsoncourses/courses",
+        // "https://my-json-server.typicode.com/katrinap77/jsoncourses/courses",
+        "https://api-bfxv.onrender.com",
         {
           method: "GET",
           headers: {
