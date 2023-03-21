@@ -62,7 +62,7 @@
 // </ul> */}
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { CoursesContext } from ".CoursesContext";
+import { CoursesContext } from "./CoursesContext";
 
 const SingleCoursePage = () => {
   const { id } = useParams();
