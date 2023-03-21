@@ -30,16 +30,6 @@ import SingleCoursePage from "./components/SingleCoursePage";
 const App = () => {
   return (
     <>
-      {/* <Header />
-      <div className="container">
-        <AllCoursesPage  < SingleCoursePage/> />
-        {/* <Course /> */}
-      {/* <Routes> */}
-      {/* <Route path="/courses/:id" element={<SingleCoursePage />} /> */}
-      {/* <Route exact path="/courses" element={<AllCourseskat />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes> */}
-      {/* </div> */}
       <div>
         <Router>
           {/* <Header /> */}
