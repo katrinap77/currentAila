@@ -23,21 +23,32 @@
 // export default App;
 
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AllCoursesPage from "./components/AllCoursesPage";
-// import Course from "./components/Course";
+import SingleCoursePage from "./components/SingleCoursePage";
 
 const App = () => {
   return (
     <>
-      {/* <Header /> */}
+      {/* <Header />
       <div className="container">
-        <AllCoursesPage />
+        <AllCoursesPage  < SingleCoursePage/> />
         {/* <Course /> */}
-        {/* <Routes> */}
-        {/* <Route path="/courses/:id" element={<SingleCoursePage />} /> */}
-        {/* <Route exact path="/courses" element={<AllCourseskat />} />
+      {/* <Routes> */}
+      {/* <Route path="/courses/:id" element={<SingleCoursePage />} /> */}
+      {/* <Route exact path="/courses" element={<AllCourseskat />} />
           <Route path="*" element={<NotFound />} />
         </Routes> */}
+      {/* </div> */}
+      <div>
+        <Router>
+          {/* <Header /> */}
+          <Routes>
+            <Route path="/" element={<AllCoursesPage />} />
+            <Route path="/courses/:id" element={<SingleCoursePage />} />
+          </Routes>
+          {/* <Footer /> */}
+        </Router>
       </div>
     </>
   );

@@ -49,6 +49,34 @@ app.get("/courses", async (req, res, next) => {
   }
 });
 
+// app.get("/courses/:id", async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const course = await pool.query(
+//       `SELECT name, description, price, image, buylink FROM courses WHERE status ='active'`
+//     );
+//     return res.status(200).json(course.rows[0]);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+app.get("/courses/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const course = await pool.query("SELECT * FROM courses WHERE id = $1", [
+      id,
+    ]);
+    if (course.rows[0] === undefined) {
+      res.sendStatus(404);
+    } else {
+      res.json(course.rows[0]);
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 // app.get("/courses", async (req, res, next) => {
 //   try {
 //     const courses = await pool.query(`SELECT * FROM courses`);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./AllCoursesPage.css";
+import "./SingleCoursePage";
 
 const AllCoursesPage = () => {
   const [courses, setCourses] = useState([]);
@@ -15,9 +16,6 @@ const AllCoursesPage = () => {
 
     fetchData();
   }, []);
-
-  // const stripeUrl = "https://www.buy.stripe.com/";
-  // console.log(buyLink);
 
   return (
     <>
@@ -38,33 +36,17 @@ const AllCoursesPage = () => {
                   <p>{course.description}</p>
                   <p>{course.price}</p>
                 </div>
-                {/* <Link to={"/Course"} className="btn"> */}
-                <button> View course</button>
-                {/* </Link> */}
+                <Link to={`/${course.id}`} className="btn">
+                  <button>View course</button>
+                </Link>
                 <span>&nbsp;&nbsp;&nbsp;</span>
                 <a
                   href={course.buylink}
-                  // href={"https://www.buy.stripe.com/" + course.buylink}
-                  // 'https://www.buy.stripe.com/test_cN2eXq7Q81FfeKAcMN'
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button> Buy course</button>
+                  <button>Buy course</button>
                 </a>
-
-                {/* <Link
-                  to={"https://buy.stripe.com/" + course.buyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button> Buy course</button>
-                </Link> */}
-                {/* <Link
-                  to={"http://www.facebook.com/" + user.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                /> */}
-
                 <br />
               </div>
             </li>

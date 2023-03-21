@@ -9,3 +9,7 @@ ul {
 .course-container {
   max-width: 500px;
 }
+
+.hidden {
+  display: none;
+}
