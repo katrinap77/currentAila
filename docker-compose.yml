@@ -6,11 +6,11 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - server
+      - api
     volumes:
       - ./client:/app/
       - /app/node_modules
-  server:
+  api:
     build:
       context: ./api
     ports:
