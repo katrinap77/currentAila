@@ -1,100 +1,55 @@
-// import "./AllCoursesPage.css";
-// import React, { useState, useEffect } from "react";
-// // import { Link } from "react-router-dom";
-// import AllCoursesPage from "./AllCoursesPage.css";
-
-// const SingleCoursePage = () => {
-//   const [courses, setCourses] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       // const response = await fetch("http://localhost:5001/courses");
-//       const response = await fetch(
-//         "https://my-json-server.typicode.com/katrinap77/jsoncourses/courses"
-//       );
-//       const course = await response.json();
-//       setCourses(course);
-//       console.log(course);
-//     };
-
-//     fetchData();
-//   }, []);
-
-// const product = products.find((item) => {
-//   return item.id === parseInt(id);
-// });
-
-// const { image, name, description, price, buylink } = course;
-
-//   return (
-//     <>
-//       <AllCoursesPage courses={courses} className="" />
-//     </>
-//   );
-// };
-// export default SingleCoursePage;
-
-// {/* <ul>
-//   <li>
-//     <div className="hidden">{id}</div>
-//     <br />
-//     <div className="course-container">
-//       <div>
-//         <img src={image} alt={description} className="course-image" />
-//         <h3>{name}</h3>
-//         <p>{description}</p>
-//         <p>{price}</p>
-//       </div>
-//       <button> View course</button>
-//       <span>&nbsp;&nbsp;</span>
-//       <Link
-//         to={buylink}
-//         // 'https://www.buy.stripe.com/test_cN2eXq7Q81FfeKAcMN'
-//         target="_blank"
-//         rel="noopener noreferrer"
-//       >
-//         <button> Buy course</button>
-//       </Link>
-
-//       <br />
-//     </div>
-//   </li>
-// </ul> */}
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CoursesContext } from "./CoursesContext";
+import "./AllCoursesPage.css";
 
 const SingleCoursePage = () => {
   const { id } = useParams();
-  const { courses } = useContext(CoursesContext);
+  const [course, setCourse] = useState([]);
 
-  const course = courses.find((item) => {
-    return item.id === parseInt(id);
-  });
+  useEffect(() => {
+    const fetchData = async () => {
+      // const response = await fetch("http://localhost:5001/courses/${id}");
+      const response = await fetch(
+        `https://my-json-server.typicode.com/katrinap77/jsoncourses/courses/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          header: JSON.stringify(course),
+        }
+      );
+      const data = await response.json();
+      setCourse(data);
+    };
 
-  if (!course) {
-    return <section className="">Loading...</section>;
-  }
-
-  const { name, description, price, image, buylink } = course;
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
   return (
-    <section className="">
-      <div className="">
-        <div className="">
-          <div className="">
-            <img className="" src={image} alt="" />
-          </div>
-          <div className="">
-            <h1 className="">{name}</h1>
-            <div className="">$ {price}</div>
-            <p className="mb-8">{description}</p>
-            <a href={buylink} target="_blank" rel="noopener noreferrer">
-              <button>Add to cart</button>
+    <div>
+      <ul>
+        <li key={course.id} className="courses-list">
+          <br />
+          <div className="course-container">
+            <div>
+              <img
+                src={course.image}
+                alt={course.description}
+                className="course-image"
+              />
+              <h3>{course.name}</h3>
+              <p>{course.description}</p>
+              <p>{course.price}</p>
+            </div>
+            <a href={course.buylink} target="_blank" rel="noopener noreferrer">
+              <button>Buy course</button>
             </a>
+            <br />
           </div>
-        </div>
-      </div>
-    </section>
+        </li>
+      </ul>
+    </div>
   );
 };
 
